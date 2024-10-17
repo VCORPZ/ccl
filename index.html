@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .blog-post {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .blog-post h2 {
+            margin-top: 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            background-color: #007BFF;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .add-post {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .add-post input, .add-post textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .add-post button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-post button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to My Blog</h1>
+    <p>Sharing my thoughts and experiences</p>
+</header>
+
+<div id="blog-container">
+    <div class="blog-post">
+        <h2>My First Blog Post</h2>
+        <p><em>Published on October 17, 2024</em></p>
+        <p>Welcome to my personal blog! I'm excited to share my journey with you. Stay tuned for more updates!</p>
+    </div>
+    
+    <div class="blog-post">
+        <h2>Exploring New Hobbies</h2>
+        <p><em>Published on October 15, 2024</em></p>
+        <p>Recently, I've taken up painting as a new hobby. It's been a great way to express myself and relax.</p>
+    </div>
+    
+    <div class="blog-post">
+        <h2>Travel Adventures</h2>
+        <p><em>Published on October 10, 2024</em></p>
+        <p>This summer, I traveled to the mountains. The scenery was breathtaking and I can't wait to share my photos!</p>
+    </div>
+</div>
+
+<div class="add-post">
+    <h2>Add a New Blog Post</h2>
+    <input type="text" id="post-title" placeholder="Title" required>
+    <textarea id="post-content" rows="5" placeholder="Write your blog post here..." required></textarea>
+    <button onclick="addBlogPost()">Add Blog Post</button>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2024 My Personal Blog</p>
+</footer>
+
+<script>
+    function addBlogPost() {
+        const title = document.getElementById('post-title').value;
+        const content = document.getElementById('post-content').value;
+        const date = new Date().toLocaleDateString();
+
+        if (title && content) {
+            const blogContainer = document.getElementById('blog-container');
+            const newPostDiv = document.createElement('div');
+            newPostDiv.className = 'blog-post';
+            newPostDiv.innerHTML = `
+                <h2>${title}</h2>
+                <p><em>Published on ${date}</em></p>
+                <p>${content}</p>
+            `;
+            blogContainer.prepend(newPostDiv); // Add new post at the top
+            document.getElementById('post-title').value = ''; // Clear input fields
+            document.getElementById('post-content').value = '';
+        } else {
+            alert('Please fill in both fields.');
+        }
+    }
+</script>
+
+</body>
+</html>
+
